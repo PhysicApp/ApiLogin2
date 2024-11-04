@@ -20,12 +20,20 @@ namespace ApiLogin.Controlador
         [HttpPost("/login")]
         public IActionResult Login([FromBody] UsuarioLogin usuario)
         {
-            var token = _authServicio.Autenticar(usuario.Username, usuario.Password);
+            var authResponse = _authServicio.Autenticar(usuario.Username, usuario.Password);
 
-            if (token == null)
+            if (authResponse.Token == null)
                 return Unauthorized();
 
-            return Ok(new { Token = token });
+            return Ok(authResponse);
+        }
+
+        [HttpPost("/registrar")]
+        public IActionResult RegistarUsuario(UsuarioLogin usuario)
+        {
+            _authServicio.RegistrarUsuario(usuario);
+
+            return Ok(new {mensaje = "Usuario registrado exitosamente" });
         }
     }
 

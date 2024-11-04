@@ -16,7 +16,13 @@ namespace ApiLogin.Repositorio
         {
             var resultado = _context.UsuarioLogins.FirstOrDefault(u => u.Username == nombreUsuario);
 
-            return resultado;
+            return resultado!;
+        }
+
+        public void GuardarUsuario(UsuarioLogin usuario)
+        {
+            _context.UsuarioLogins.Add(usuario);
+            _context.SaveChanges();
         }
     }
 
