@@ -1,4 +1,6 @@
 using ApiInventario.Data;
+using ApiInventario.Repositorio;
+using ApiInventario.Servicio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Implementación de de Interfaces y Servicios
+
+builder.Services.AddScoped<IInventarioRepositorio, InventarioRepositorio>();
+builder.Services.AddScoped<IInventarioServicio, InventarioServicio>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

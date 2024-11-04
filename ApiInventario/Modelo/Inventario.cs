@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ApiInventario.Modelo
 {
@@ -33,6 +34,7 @@ namespace ApiInventario.Modelo
         {
             return $"IdInventario: {IdInventario}, Nombre: {Nombre}, Descripción: {Descripcion}, Cantidad: {Cantidad}, Precio: {Precio:C}, Fecha de Adquisición: {FechaAdquisicion:d}";
         }
+
     }
 
 }
