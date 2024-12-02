@@ -48,6 +48,7 @@ builder.Services.AddSwaggerGen();
 //Implementación de de Interfaces y Servicios
 builder.Services.AddScoped<IUsuarioLoginRepositorio, UsuarioLoginRepositorio>();
 builder.Services.AddScoped<IAuthServicio, AuthServicio>();
+builder.Services.AddScoped<IEmailServicio, EmailServicio>();
 
 
 var app = builder.Build();
